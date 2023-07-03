@@ -20,7 +20,7 @@
 
     <select id="getUserByLike" resultType="User">
         select * from t_user
-        where username like "%"#{username}"%"
+        where username like concat('%',#{username},'%')
     </select>
     <select id="getUserByTableName" resultType="User">
         select *

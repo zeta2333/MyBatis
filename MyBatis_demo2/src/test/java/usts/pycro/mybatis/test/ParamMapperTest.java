@@ -50,8 +50,8 @@ public class ParamMapperTest {
         // map.put("username", "张三");
         // map.put("password", "123456");
         // User user = mapper.checkLoginByMap(map);
-        User user = mapper.checkLoginByParam("李四", "123456");
-        System.out.println("user = " + user);
+        // User user = mapper.checkLoginByParam("李四", "123456");
+        // System.out.println("user = " + user);
     }
 
     @Test

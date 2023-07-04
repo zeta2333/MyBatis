@@ -2,6 +2,7 @@ package usts.pycro.mybatis.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Pycro
@@ -9,6 +10,7 @@ import lombok.Data;
  * 2023-07-03 4:34 PM
  */
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class Emp {
 
@@ -22,5 +24,5 @@ public class Emp {
 
     private String email;
 
-    private Integer deptId;
+    private Dept dept;
 }

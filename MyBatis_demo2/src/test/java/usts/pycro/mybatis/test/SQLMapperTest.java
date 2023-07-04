@@ -40,4 +40,10 @@ public class SQLMapperTest {
         mapper.insertUser(user);
         System.out.println(user);
     }
+
+    @Test
+    public void test() {
+        String res = String.join(",", "1", "2");
+        System.out.println(res);
+    }
 }

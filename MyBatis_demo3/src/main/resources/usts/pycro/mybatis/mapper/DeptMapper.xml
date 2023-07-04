@@ -5,4 +5,43 @@
 <!-- namespace对应接口全类名 -->
 <mapper namespace="usts.pycro.mybatis.mapper.DeptMapper">
 
+    <select id="getEmpAndDeptByStepTwo" resultType="Dept">
+        select *
+        from t_dept
+        where dept_id = #{deptId}
+    </select>
+    <!--
+      collection：处理一对多的映射关系
+      ofType：表示该属性对应的集合中元素的类型
+         -->
+    <resultMap id="deptAndEmpResMap" type="dept">
+        <id property="deptId" column="dept_id"/>
+        <result property="deptName" column="dept_name"/>
+        <collection property="emps" ofType="emp">
+            <id property="empId" column="emp_id"/>
+            <result property="empName" column="emp_name"/>
+            <result property="age" column="age"/>
+            <result property="email" column="email"/>
+            <result property="gender" column="gender"/>
+        </collection>
+    </resultMap>
+
+    <select id="getDeptAndEmp" resultMap="deptAndEmpResMap">
+        select *
+        from t_dept d
+                 left join t_emp e on d.dept_id = e.dept_id
+        where d.dept_id = #{deptId}
+    </select>
+    <resultMap id="deptAndEmpResMapByStepOne" type="dept">
+        <id property="deptId" column="dept_id"/>
+        <result property="deptName" column="dept_name"/>
+        <collection property="emps"
+                    select="usts.pycro.mybatis.mapper.EmpMapper.getDeptAndEmpByStepTwo"
+                    column="dept_id"/>
+    </resultMap>
+    <select id="getDeptAndEmpByStepOne" resultMap="deptAndEmpResMapByStepOne">
+        select *
+        from t_dept
+        where dept_id = #{deptId}
+    </select>
 </mapper>

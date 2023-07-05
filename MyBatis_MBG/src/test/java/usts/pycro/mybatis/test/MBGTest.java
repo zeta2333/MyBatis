@@ -6,8 +6,6 @@ import usts.pycro.mybatis.model.Emp;
 import usts.pycro.mybatis.model.EmpExample;
 import usts.pycro.mybatis.utils.SqlSessionUtils;
 
-import java.util.List;
-
 /**
  * @author Pycro
  * @version 1.0
@@ -21,9 +19,11 @@ public class MBGTest {
     @Test
     public void testMBG() {
         EmpExample example = new EmpExample();
-        example.createCriteria().andEmpNameEqualTo("张三").andAgeGreaterThan(20);
-        example.or().andGenderEqualTo("女");
-        List<Emp> empList = empMapper.selectByExample(example);
-        empList.forEach(System.out::println);
+        // example.createCriteria().andEmpNameEqualTo("张三").andAgeGreaterThan(20);
+        // example.or().andGenderEqualTo("女");
+        // List<Emp> empList = empMapper.selectByExample(example);
+        // empList.forEach(System.out::println);
+        // empMapper.updateByPrimaryKey(new Emp(5, "田鸡", 26, null, "456@qq.com", 2));
+        empMapper.updateByPrimaryKeySelective(new Emp(5, "田鸡", 26, null, "456@qq.com", 2));
     }
 }
